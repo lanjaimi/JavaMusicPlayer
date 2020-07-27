@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="500.0" maxWidth="800.0" minHeight="500.0" minWidth="800.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <!-- yay-->
+
+
+    <!--' ((Char - '-') | ('-' (Char - '-')))* '-->
+   <bottom>
+      <VBox prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+                <HBox maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #1e272e;">
+                    <children>
+                        <Label fx:id="timerLabel" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" text="0:00" textFill="#e4dede">
+                            <HBox.margin>
+                                <Insets left="5.0" />
+                            </HBox.margin>
+                        </Label>
+                  <Slider fx:id="snSlider" maxWidth="730.0" minWidth="730.0" prefHeight="16.0" prefWidth="730.0" />
+                        <Label fx:id="lengthLabel" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" text="0:00" textFill="#e4dede" />
+                    </children>
+                    <padding>
+                        <Insets top="5.0" />
+                    </padding>
+                </HBox>
+              <HBox maxHeight="70.0" minHeight="70.0" prefHeight="70.0" style="-fx-background-color: black;">
+                  <children>
+                  <Button fx:id="loopBtn" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#toggleLoop" prefWidth="50.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                            <ImageView fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@images/loop.png" />
+                                </image>
+                            </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="shuffleBtn" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#toggleShuffle" prefWidth="50.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                            <ImageView fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@images/shuffle.png" />
+                                </image>
+                            </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="prevBtn" maxWidth="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#playPrev" prefWidth="80.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                            <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@images/next.png" />
+                                </image>
+                            </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="150.0" />
+                     </HBox.margin>
+                  </Button>
+                  <StackPane maxWidth="80.0" minWidth="80.0" prefHeight="150.0" prefWidth="80.0">
+                     <children>
+                        <Button fx:id="playBtn" onAction="#resume" style="-fx-background-color: transparent;">
+                           <graphic>
+                                  <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                      <image>
+                                          <Image url="@images/play.png" />
+                                      </image>
+                                  </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="pauseBtn" mnemonicParsing="false" onMouseClicked="#pause" style="-fx-background-color: transparent;" visible="false">
+                           <graphic>
+                              <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/pause.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </StackPane>
+                  <Button maxWidth="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#playNext" prefWidth="80.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                            <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                <image>
+                                    <Image url="@images/next.png" />
+                                </image>
+                            </ImageView>
+                     </graphic>
+                  </Button>
+                      <ImageView fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@images/volume.png" />
+                          </image>
+                          <HBox.margin>
+                              <Insets left="120.0" top="20.0" />
+                          </HBox.margin>
+                      </ImageView>
+                  <Slider fx:id="volSlider" max="1.0" min="1.0E-4" onDragDropped="#getNewVolume" onMouseReleased="#getNewVolume" value="1.0">
+                     <HBox.margin>
+                        <Insets top="27.0" />
+                     </HBox.margin>
+                  </Slider>
+                  </children>
+              </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin></VBox>
+   </bottom>
+   <left>
+      <StackPane maxWidth="800.0" minWidth="800.0" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="table" maxWidth="800.0" minWidth="800.0" prefHeight="200.0" prefWidth="200.0" visible="false" />
+            <Pane fx:id="home" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #cac6ae;">
+               <children>
+                  <ImageView fitHeight="243.0" fitWidth="353.0" layoutX="246.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/giffy.gif" />
+                     </image></ImageView>
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+   </left>
+   <top>
+      <StackPane maxHeight="100.0" maxWidth="800.0" minHeight="100.0" minWidth="800.0" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+              <VBox fx:id="head" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: black;">
+                  <padding>
+                      <Insets bottom="40.0" left="10.0" />
+                  </padding>
+                  <children>
+                      <HBox prefHeight="100.0" prefWidth="200.0">
+                          <padding>
+                              <Insets left="10.0" top="20.0" />
+                          </padding>
+                     <children>
+                              <Label fx:id="titleLabel" maxWidth="700.0" minWidth="700.0" prefWidth="750.0" text="Title" textFill="WHITE">
+                                  <font>
+                                      <Font name="System Bold" size="24.0" />
+                                  </font>
+                              </Label>
+                        <Button mnemonicParsing="false" onAction="#showList" style="-fx-background-color: transparent transparent;">
+                           <graphic>
+                              <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/playList.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets top="-15.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                      <HBox prefHeight="100.0" prefWidth="200.0">
+                          <children>
+                              <ImageView fitHeight="50.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@images/artist.png" />
+                                  </image>
+                                  <HBox.margin>
+                                      <Insets top="2.0" />
+                                  </HBox.margin>
+                              </ImageView>
+                              <Label fx:id="artistLabel" text="Artist" textFill="#b2aeae">
+                                  <padding>
+                                      <Insets left="5.0" top="5.0" />
+                                  </padding>
+                              </Label>
+                              <ImageView fitHeight="50.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@images/album.png" />
+                                  </image>
+                                  <HBox.margin>
+                                      <Insets left="10.0" />
+                                  </HBox.margin>
+                              </ImageView>
+                              <Label fx:id="albumLabel" text="Album" textFill="#b2aeae">
+                                  <padding>
+                                      <Insets top="5.0" />
+                                  </padding>
+                              </Label>
+                          </children>
+                          <opaqueInsets>
+                              <Insets />
+                          </opaqueInsets>
+                          <VBox.margin>
+                              <Insets left="10.0" />
+                          </VBox.margin>
+                      </HBox>
+                      <!-- Heeeere-->
+                  </children>
+              </VBox>
+            <HBox fx:id="tableHead" maxHeight="100.0" maxWidth="800.0" minHeight="100.0" minWidth="800.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #1e272e;" visible="false">
+               <children>
+                  <Button maxHeight="30.0" maxWidth="100.0" minHeight="30.0" minWidth="100.0" mnemonicParsing="false" onAction="#hideList" prefHeight="30.0" text="&lt;-- Home">
+                     <HBox.margin>
+                        <Insets left="30.0" right="10.0" top="50.0" />
+                     </HBox.margin>
+                  </Button>
+                        <Button maxHeight="30.0" maxWidth="100.0" minHeight="30.0" minWidth="100.0" mnemonicParsing="false" onAction="#chooseFile" prefHeight="30.0" text="Add">
+                     <HBox.margin>
+                        <Insets top="50.0" />
+                     </HBox.margin>
+                  </Button>
+                        <Button maxHeight="30.0" maxWidth="100.0" minHeight="30.0" minWidth="100.0" mnemonicParsing="false" onAction="#deleteEntry" prefHeight="30.0" text="Delete">
+                     <HBox.margin>
+                        <Insets left="10.0" top="50.0" />
+                     </HBox.margin>
+                  </Button>
+                        <Label fx:id="error" style="-fx-border-color: red;" text="File Already Exist in Destination" textFill="#c92222" visible="false">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                     <HBox.margin>
+                        <Insets left="150.0" top="40.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                        </Label>
+               </children>
+            </HBox>
+         </children>
+      </StackPane>
+   </top>
+</BorderPane>
